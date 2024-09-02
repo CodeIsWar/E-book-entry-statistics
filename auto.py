@@ -3,9 +3,10 @@ import os
 from bs4 import BeautifulSoup
 import sys
 import ahocorasick
+import shutil
 f9=zipfile.ZipFile(sys.argv[1])
 for file in f9.namelist():
-    f9.extract(file,r'temp')
+    f9.extract(file,'temp')
 for findex in range(0,2):
     for index in range(0,10):
         try:
@@ -47,3 +48,7 @@ for i in range(0,20):
 for kword in keywords:
     print(kword,end='')
     print(citiao[kword])
+try:
+    shutil.rmtree('temp')
+except:
+    print('error')
